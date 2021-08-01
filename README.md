@@ -91,7 +91,7 @@ To get events from the calendar, you may use any of the following URLs. The para
 ```
 /event/<int::id>
 ```
-* example URL
+* example URL with valid id number
 ```
 /event/1
 ```
@@ -101,6 +101,16 @@ To get events from the calendar, you may use any of the following URLs. The para
     "id": 1,
     "event": "Event name goes here",
     "date": "2021-04-20"
+}
+```
+* example URL with invalid id number
+```
+/event/1
+```
+* response format
+```
+{
+    "message": "The event doesn't exist!"
 }
 ```
 #### *__/event/?start_time=YYYY-MM-DD&end_time=YYYY-MM-DD__*
@@ -135,7 +145,49 @@ To get events from the calendar, you may use any of the following URLs. The para
 ]
 ```
 ### POST Requests
-To add events to the calendar, you may use any of the following URLs. 
+To add events to the calendar, you may use any of the following URLs. The response bodies and any parameters are outlined below. All events must contain an event name and date. If one is missing, the event will not be added to the calendar and an appropriate error message will be sent in the response body.
+#### *__/event__*
+
+* valid request body:
+```
+request_body = {
+    "event": "Name of event goes here",
+    "date": "2001-04-20"
+}
+
+response_body = {
+    "message": "The event has been added!",
+    "event": "Name of event goes here",
+    "date": "2001-04-20"
+}
+```
+* invalid request body (missing event name):
+```
+request_body = {
+    "date": "2001-04-20"
+}
+
+response_body = {
+    "message": {
+        "event": "The event name is required!'
+    }
+}
+```
+* invalid request body (missing date):
+```
+request_body = {
+    "event": "Event name or something"
+}
+
+response_body = {
+    "message": {
+        "date": "The event date with the correct format is required! The correct format is YYYY-MM-DD!"
+    }
+}
+```
+
+### DELETE Requests
+To delete events from the calender, you may use any of the following URLs. In order to delete an event, you must provide the id number of the event in the calendar to the delete request.
 
 
 
