@@ -2,6 +2,14 @@
 ## Description
 Simple REST service using the Flask framework to save and manage a calendar of events. Worked with a database using Flask-SQLAlchemy extension and created resources using the Flask-RESTful extension.
 
+## What I learned
+* Flask-framework (RESTful, SQLAlchemy)
+* Basic HTTP requests (GET, POST, DELETE)
+* SQL (SQLite3)
+* Postman
+* Python Datetime Objects
+* JSON file format
+
 ## Functionality
 ### The basics
 To start, the web calendar supports 3 basic operations:
